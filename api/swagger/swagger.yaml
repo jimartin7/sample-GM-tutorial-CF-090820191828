@@ -88,6 +88,54 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+            
+  /bye:
+    # binds app logic to a route (api/controllers/hello_world.js)
+    x-swagger-router-controller: hello_world
+    get:
+      description: Returns Bye + ' ' + name
+      # used as the method name of the controller inside hello_world.js
+      operationId: bye
+      parameters:
+        - name: name
+          in: query
+          description: name
+          required: false
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: string
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /seeYou:
+    # binds app logic to a route (api/controllers/hello_world.js)
+    x-swagger-router-controller: see_you
+    get:
+      description: Returns See you + ' ' + name
+      # used as the method name of the controller inside see_you.js
+      operationId: seeYou
+      parameters:
+        - name: name
+          in: query
+          description: name
+          required: false
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: string
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
 # complex objects have schema definitions
 definitions:
   Application:
